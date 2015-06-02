@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Resume App</string>
+    <string name="home">Home</string>
+
+    <string name="home_text" >Hello and welcome to my resume!  This application contains various examples of commonly used Android design.&lt;br&gt;&lt;br&gt;For example, this element is a custom font view that is set via xml.  Additionally, it is a text view with some basic HTML formatting.</string>
+
+    <string name="action_settings">Settings</string>
+</resources>
