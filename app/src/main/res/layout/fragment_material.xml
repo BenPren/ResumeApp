@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Giving this an item a BG color since we are going to add it on top of the last item -->
+<ben.prendergast.resumeapp.widgets.AnimatedLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/default_bg">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/materialList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+</ben.prendergast.resumeapp.widgets.AnimatedLinearLayout>

@@ -9,7 +9,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/header_height"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@color/default_bg">
 
         <LinearLayout
             android:id="@+id/menuClickable"
@@ -29,10 +30,16 @@
                 android:layout_height="wrap_content"
                 android:text="@string/app_name"
                 android:textSize="@dimen/header_text_size"
-                custom:textFont="SourceCodePro-Bold"/>
+                android:textColor="@color/selector_text"
+                custom:textFont="OpenSans-Bold"/>
         </LinearLayout>
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_separator"
+        android:background="@color/default_separator"/>
 
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawerContainer"
@@ -55,9 +62,49 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/menu_item_height"
                 android:textSize="@dimen/menu_item_text_size"
-                android:layout_gravity="center_vertical"
+                android:gravity="center"
                 android:text="@string/home"
-                custom:textFont="SourceCodePro-Medium" />
+                android:textColor="@color/selector_text"
+                android:background="@drawable/selector_menu_button"
+                custom:textFont="OpenSans-Regular" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_separator"
+                android:background="@color/default_separator"/>
+
+            <ben.prendergast.resumeapp.widgets.CustomTextView
+                android:id="@+id/materialMenuOption"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/menu_item_height"
+                android:textSize="@dimen/menu_item_text_size"
+                android:gravity="center"
+                android:text="@string/material_design"
+                android:textColor="@color/selector_text"
+                android:background="@drawable/selector_menu_button"
+                custom:textFont="OpenSans-Regular" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_separator"
+                android:background="@color/default_separator"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom">
+
+                <ben.prendergast.resumeapp.widgets.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/menu_item_height"
+                    android:textSize="@dimen/menu_item_text_size"
+                    android:gravity="center"
+                    android:text="@string/drawer_desc"
+                    android:textColor="@color/default_text"
+                    android:background="@drawable/selector_menu_button"
+                    custom:textFont="OpenSans-Regular" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

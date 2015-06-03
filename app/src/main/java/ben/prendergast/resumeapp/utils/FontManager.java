@@ -27,7 +27,7 @@ public class FontManager {
             return mFontCache.get(fontName);
         }
         try {
-            Typeface typeface = Typeface.createFromAsset(context.getAssets(), "assets/" + fontName + ".otf");
+            Typeface typeface = Typeface.createFromAsset(context.getAssets(), fontName + ".ttf");
             mFontCache.put(fontName, typeface);
             return typeface;
         }catch(Exception e) {

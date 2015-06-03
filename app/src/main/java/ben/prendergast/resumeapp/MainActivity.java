@@ -1,15 +1,16 @@
 package ben.prendergast.resumeapp;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.Gravity;
 import android.view.View;
 
 import ben.prendergast.resumeapp.fragments.HomeFragment;
+import ben.prendergast.resumeapp.fragments.MaterialFragment;
 
 
 public class MainActivity extends Activity implements View.OnClickListener{
@@ -24,6 +25,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
         // Setup the menu buttons
         findViewById(R.id.homeMenuOption).setOnClickListener(this);
+        findViewById(R.id.materialMenuOption).setOnClickListener(this);
 
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.add(R.id.contentLayout, new HomeFragment());
@@ -31,35 +33,23 @@ public class MainActivity extends Activity implements View.OnClickListener{
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
     public void onClick(View v) {
+        DrawerLayout drawerContainer = (DrawerLayout)findViewById(R.id.drawerContainer);
         switch(v.getId()) {
             case R.id.menuClickable:
-                DrawerLayout drawerContainer = (DrawerLayout)findViewById(R.id.drawerContainer);
+                if(drawerContainer.isDrawerOpen(Gravity.LEFT)) {
+                    drawerContainer.closeDrawer(Gravity.LEFT);
+                } else {
+                    drawerContainer.openDrawer(Gravity.LEFT);
+                }
                 break;
             case R.id.homeMenuOption:
+                drawerContainer.closeDrawer(Gravity.LEFT);
                 gotoHome();
+                break;
+            case R.id.materialMenuOption:
+                drawerContainer.closeDrawer(Gravity.LEFT);
+                gotoMaterial();
                 break;
         }
     }
@@ -67,9 +57,24 @@ public class MainActivity extends Activity implements View.OnClickListener{
     //**********************************************************************************************
     //********************************Functions for fragment navigation*****************************
     //**********************************************************************************************
+    /**
+     * Clears the fragment stack, effectively going to the home screen.
+     */
     public void gotoHome() {
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
         getFragmentManager().popBackStackImmediate(R.id.contentLayout, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+    }
+
+    public void gotoMaterial() {
+        addFragment(new MaterialFragment());
+    }
+
+    private void addFragment(Fragment fragment) {
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(R.animator.slide_in, R.animator.slide_in,
+                R.animator.slide_in, R.animator.slide_in);
+        transaction.addToBackStack(fragment.getClass().getName());
+        transaction.add(R.id.contentLayout, fragment);
+        transaction.commit();
     }
     //**********************************************************************************************
     //**********************************************************************************************
