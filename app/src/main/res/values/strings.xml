@@ -4,7 +4,7 @@
     <string name="material_design">Material Design</string>
 
     <string name="home_text" >Hello and welcome to my resume!  This application contains various examples of commonly used Android design.&lt;br&gt;&lt;br&gt;For example, this element is a custom font view that is set via xml.  Additionally, it is a text view with some basic HTML formatting.&lt;br&gt;&lt;br&gt;Swipe from the left edge or tap the app title to see more.</string>
-    <string name="drawer_desc">This is your basic menu drawer.  A very common UI element in most Android apps.</string>
+    <string name="drawer_desc">This is your basic menu drawer found in most Android apps.</string>
 
     <string name="action_settings">Settings</string>
 

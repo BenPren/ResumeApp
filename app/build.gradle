@@ -13,8 +13,18 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    // Simple build variants to show how one source base could be used for multiple applications
+    productFlavors {
+        blue {
+            applicationId "ben.prendergast.resumeapp.blue"
+        }
+
+        red {
+            applicationId "ben.prendergast.resumeapp.red"
         }
     }
 }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="default_text">#000000</color>
+    <color name="default_text_pressed">#F4511E</color>
+    <color name="default_bg">#E57373</color>
+    <color name="default_button">#C62828</color>
+    <color name="default_button_pressed">#B71C1C</color>
+    <color name="default_separator">#B71C1C</color>
+</resources>
