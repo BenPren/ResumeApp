@@ -14,4 +14,7 @@
         <item>However, as you can see with these list cards, the items have depth.</item>
         <item>This is achieved by rounding the edges and giving the item a shadow.</item>
     </string-array>
+
+    <!--Error messages-->
+    <string name="failed_unit_test_sql">Unit test for SQL test failed, please debug.</string>
 </resources>

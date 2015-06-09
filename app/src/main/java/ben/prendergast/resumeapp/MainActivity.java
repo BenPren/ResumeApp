@@ -4,13 +4,16 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Toast;
 
 import ben.prendergast.resumeapp.fragments.HomeFragment;
 import ben.prendergast.resumeapp.fragments.MaterialFragment;
+import ben.prendergast.resumeapp.utils.UnitTest;
 
 
 public class MainActivity extends Activity implements View.OnClickListener{
@@ -30,6 +33,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.add(R.id.contentLayout, new HomeFragment());
         transaction.commit();
+
+        mUnitTests.execute(null, null);
     }
 
     @Override
@@ -78,4 +83,24 @@ public class MainActivity extends Activity implements View.OnClickListener{
     }
     //**********************************************************************************************
     //**********************************************************************************************
+    /**
+     *
+     */
+    AsyncTask<Object, Object, Object> mUnitTests = new AsyncTask<Object, Object, Object>() {
+
+        @Override
+        protected Object doInBackground(Object... params) {
+            return UnitTest.testSQLFunctions(MainActivity.this);
+        }
+
+        @Override
+        protected void onPostExecute(Object o) {
+            super.onPostExecute(o);
+            // We failed our SQL Unit test.  Show a simple error.
+            if(!(Boolean)o) {
+                Toast.makeText(MainActivity.this, R.string.failed_unit_test_sql,
+                        Toast.LENGTH_LONG).show();
+            }
+        }
+    };
 }
